@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send('A API está executando na Cloud AWS! Code Pipeline esta automatizando o Deploy!');
+    res.send('A API está executando na Cloud AWS! Deploy automatizado com CodePipeline!');
 });
 
 const port = process.env.PORT || 3000;
