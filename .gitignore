@@ -1,4 +1,4 @@
 node_modules
 
 #Ignora a pasta com imagens do projeto
-images/
+#images/
