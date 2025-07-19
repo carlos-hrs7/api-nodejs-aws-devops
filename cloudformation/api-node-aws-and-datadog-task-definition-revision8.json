@@ -1,0 +1,99 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:734660047020:task-definition/api-node-aws-and-datadog-task-definition:8",
+    "containerDefinitions": [
+        {
+            "name": "api-node-aws",
+            "image": "734660047020.dkr.ecr.us-east-1.amazonaws.com/api-node-aws:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "api-node-aws-3000-tcp",
+                    "containerPort": 3000,
+                    "hostPort": 3000,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "systemControls": []
+        },
+        {
+            "name": "datadog-agent",
+            "image": "public.ecr.aws/datadog/agent:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "datadog-agent-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": false,
+            "environment": [
+                {
+                    "name": "DD_SITE",
+                    "value": "datadoghq.com"
+                },
+                {
+                    "name": "ECS_FARGATE",
+                    "value": "true"
+                },
+                {
+                    "name": "DD_API_KEY",
+                    "value": "7faa5f42f00f286c5e83a7247237c440"
+                }
+            ],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "systemControls": []
+        }
+    ],
+    "family": "api-node-aws-and-datadog-task-definition",
+    "taskRoleArn": "arn:aws:iam::734660047020:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::734660047020:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 8,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "512",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2025-07-19T14:53:31.669Z",
+    "registeredBy": "arn:aws:iam::734660047020:root",
+    "enableFaultInjection": false,
+    "tags": []
+}
